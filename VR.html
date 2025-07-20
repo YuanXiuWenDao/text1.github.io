@@ -1,0 +1,636 @@
+{% extends "base.html" %}
+
+{% block title %}VR系统{% endblock %}
+
+{% block content %}
+    <h1>VR导览系统</h1>
+    <p>通过最先进的虚拟现实技术，身临其境地探索井冈山的革命遗址和自然景观。支持多种VR设备，提供完全沉浸式的体验。</p>
+
+    <!-- VR主展示区 -->
+    <div class="vr-container">
+        <div class="vr-controls">
+            <button class="vr-btn" id="vr-fullscreen"><i class="fas fa-expand"></i> 全屏模式</button>
+            <button class="vr-btn" id="vr-start"><i class="fas fa-play"></i> 开始体验</button>
+            <button class="vr-btn" id="vr-settings"><i class="fas fa-cog"></i> 设置</button>
+        </div>
+        <div class="vr-overlay">
+            <h3>井冈山革命博物馆VR导览</h3>
+            <p>正在加载场景...</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VR体验点 -->
+    <div class="section-title">
+        <h2>VR体验点</h2>
+    </div>
+    <div class="grid">
+        <div class="card">
+            <div class="card-img">
+                <img src="https://example.com/huangyangjie-vr.jpg" alt="黄洋界VR">
+                <div class="card-tag">战斗体验</div>
+            </div>
+            <div class="card-content">
+                <h3>黄洋界保卫战</h3>
+                <p>体验1928年黄洋界保卫战的震撼场景，感受红军战士的英勇无畏。通过VR技术重现当年战斗场面，包括炮声、呐喊声等全方位感官体验。</p>
+                <div class="card-stats">
+                    <span><i class="fas fa-vr-cardboard"></i> VR专属</span>
+                    <span><i class="fas fa-clock"></i> 15分钟体验</span>
+                </div>
+                <a href="#" class="btn" style="padding: 12px 25px; font-size: 1rem;">开始体验</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img">
+                <img src="https://example.com/panorama-vr.jpg" alt="井冈山全景VR">
+                <div class="card-tag">360°全景</div>
+            </div>
+            <div class="card-content">
+                <h3>井冈山全景</h3>
+                <p>360度全景俯瞰井冈山壮丽景色，自由切换视角，感受大自然的鬼斧神工。包含四季变化模式，可体验不同季节的井冈山美景。</p>
+                <div class="card-stats">
+                    <span><i class="fas fa-expand"></i> 全景模式</span>
+                    <span><i class="fas fa-snowflake"></i> 四季变化</span>
+                </div>
+                <a href="#" class="btn" style="padding: 12px 25px; font-size: 1rem;">开始体验</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-img">
+                <img src="https://example.com/museum-vr.jpg" alt="革命博物馆VR">
+                <div class="card-tag">互动参观</div>
+            </div>
+            <div class="card-content">
+                <h3>虚拟博物馆</h3>
+                <p>足不出户参观井冈山革命博物馆，近距离观赏珍贵文物和历史资料。支持文物3D旋转查看，并有专业语音讲解。</p>
+                <div class="card-stats">
+                    <span><i class="fas fa-museum"></i> 3D文物</span>
+                    <span><i class="fas fa-headphones"></i> 语音讲解</span>
+                </div>
+                <a href="#" class="btn" style="padding: 12px 25px; font-size: 1rem;">开始体验</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D革命文物展示 -->
+    <div style="margin-top: 80px;">
+        <div class="section-title">
+            <h2>3D革命文物展示</h2>
+            <p>旋转、缩放查看珍贵革命文物细节</p>
+        </div>
+
+        <div class="artifact-viewer">
+            <div class="artifact-container">
+                <div class="artifact-model" id="artifact-1">
+                    <div class="artifact-info">
+                        <h3>红军军帽</h3>
+                        <p>1928年红军战士佩戴的标准军帽，采用粗布制作，带有红色五角星徽章。</p>
+                        <div class="artifact-controls">
+                            <button class="btn-rotate"><i class="fas fa-undo"></i> 旋转</button>
+                            <button class="btn-zoom"><i class="fas fa-search"></i> 缩放</button>
+                            <button class="btn-info"><i class="fas fa-info-circle"></i> 详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artifact-model" id="artifact-2">
+                    <div class="artifact-info">
+                        <h3>革命传单</h3>
+                        <p>井冈山时期手工印刷的革命宣传单，内容为《土地革命纲领》。</p>
+                        <div class="artifact-controls">
+                            <button class="btn-rotate"><i class="fas fa-undo"></i> 旋转</button>
+                            <button class="btn-zoom"><i class="fas fa-search"></i> 缩放</button>
+                            <button class="btn-info"><i class="fas fa-info-circle"></i> 详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="artifact-nav">
+                <button class="btn-prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="artifact-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="btn-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VR设备支持 -->
+    <div style="margin-top: 80px;">
+        <div class="section-title">
+            <h2>VR设备支持</h2>
+            <p>兼容主流VR设备，提供最佳体验</p>
+        </div>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div class="card" style="text-align: center; padding: 30px;">
+                <div style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px;">
+                    <i class="fab fa-oculus"></i>
+                </div>
+                <h3>Oculus系列</h3>
+                <p>全面支持Oculus Rift、Quest系列设备，提供最佳的手柄交互体验。</p>
+                <div class="device-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+
+            <div class="card" style="text-align: center; padding: 30px;">
+                <div style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px;">
+                    <i class="fas fa-vr-cardboard"></i>
+                </div>
+                <h3>HTC Vive</h3>
+                <p>完美适配HTC Vive系列设备，支持房间级VR体验。</p>
+                <div class="device-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+
+            <div class="card" style="text-align: center; padding: 30px;">
+                <div style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px;">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>手机VR</h3>
+                <p>支持各类手机VR眼镜，如Cardboard、Gear VR等。</p>
+                <div class="device-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+            </div>
+
+            <div class="card" style="text-align: center; padding: 30px;">
+                <div style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px;">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <h3>PC端</h3>
+                <p>无需VR设备，普通电脑也可体验基础功能。</p>
+                <div class="device-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VR体验指南 -->
+    <div style="margin-top: 80px; background: rgba(15, 28, 63, 0.3); padding: 50px; border-radius: 15px; border: 1px solid rgba(0, 240, 255, 0.2);">
+        <div class="section-title">
+            <h2>VR体验指南</h2>
+            <p>获取最佳VR体验的建议和技巧</p>
+        </div>
+
+        <div class="guide-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>设备准备</h3>
+                    <p>确保您的VR设备已正确连接并充电。对于PC VR设备，请检查所有线缆连接。</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>空间设置</h3>
+                    <p>清理出至少2m×2m的安全区域，移除可能绊倒您的障碍物。</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>舒适调整</h3>
+                    <p>调整头戴设备的松紧度和瞳距，确保图像清晰且佩戴舒适。</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>开始体验</h3>
+                    <p>选择您感兴趣的VR场景，按照屏幕提示操作控制器。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="guide-tips">
+            <h3 style="color: var(--secondary-color); margin-bottom: 20px;"><i class="fas fa-lightbulb"></i> 小贴士</h3>
+            <ul>
+                <li>首次使用VR建议从短时间体验开始，逐步延长</li>
+                <li>如果感到不适，请立即停止使用</li>
+                <li>使用耳机可获得最佳音频体验</li>
+                <li>定期清洁VR设备镜头和面罩</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+<style>
+    /* VR主容器样式 */
+    .vr-container {
+        width: 100%;
+        height: 600px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        position: relative;
+        overflow: hidden;
+        margin: 60px 0;
+        border: 2px solid var(--secondary-color);
+        box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+    }
+
+    .vr-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://example.com/vr-bg.jpg') center/cover no-repeat;
+        opacity: 0.2;
+    }
+
+    .vr-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg,
+                  transparent 48%, rgba(0, 240, 255, 0.1) 49%,
+                  rgba(0, 240, 255, 0.1) 51%, transparent 52%);
+        background-size: 10px 10px;
+        pointer-events: none;
+    }
+
+    .vr-controls {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 15px;
+        z-index: 10;
+    }
+
+    .vr-btn {
+        background: rgba(0, 240, 255, 0.2);
+        color: var(--light-color);
+        border: 1px solid var(--secondary-color);
+        padding: 12px 25px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        backdrop-filter: blur(5px);
+    }
+
+    .vr-btn:hover {
+        background: var(--secondary-color);
+        color: var(--dark-color);
+    }
+
+    .vr-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 5;
+        background: rgba(5, 10, 23, 0.8);
+        padding: 30px;
+        border-radius: 10px;
+        border: 1px solid var(--secondary-color);
+        max-width: 500px;
+    }
+
+    .loading-bar {
+        width: 100%;
+        height: 10px;
+        background: rgba(224, 247, 250, 0.2);
+        border-radius: 5px;
+        margin-top: 20px;
+        overflow: hidden;
+    }
+
+    .loading-progress {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+        border-radius: 5px;
+        animation: loading 3s infinite;
+    }
+
+    @keyframes loading {
+        0% { width: 0; }
+        50% { width: 100%; }
+        100% { width: 0; }
+    }
+
+    /* 3D文物展示样式 */
+    .artifact-viewer {
+        margin-top: 40px;
+        position: relative;
+    }
+
+    .artifact-container {
+        display: flex;
+        overflow: hidden;
+        height: 500px;
+        background: rgba(15, 28, 63, 0.3);
+        border-radius: 15px;
+        border: 1px solid rgba(0, 240, 255, 0.3);
+        box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+    }
+
+    .artifact-model {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .artifact-model::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://example.com/3d-bg.png') center/cover no-repeat;
+        opacity: 0.3;
+    }
+
+    .artifact-info {
+        background: rgba(5, 10, 23, 0.8);
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 500px;
+        border: 1px solid var(--secondary-color);
+        box-shadow: var(--neon-glow);
+        z-index: 2;
+    }
+
+    .artifact-controls {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .artifact-controls button {
+        background: rgba(0, 240, 255, 0.2);
+        color: var(--light-color);
+        border: 1px solid var(--secondary-color);
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .artifact-controls button:hover {
+        background: var(--secondary-color);
+        color: var(--dark-color);
+    }
+
+    .artifact-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .btn-prev, .btn-next {
+        background: rgba(0, 240, 255, 0.2);
+        color: var(--light-color);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 1.2rem;
+    }
+
+    .btn-prev:hover, .btn-next:hover {
+        background: var(--secondary-color);
+        color: var(--dark-color);
+    }
+
+    .artifact-dots {
+        display: flex;
+        margin: 0 20px;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(224, 247, 250, 0.3);
+        margin: 0 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .dot.active {
+        background: var(--secondary-color);
+        transform: scale(1.3);
+    }
+
+    /* 设备评级 */
+    .device-rating {
+        color: var(--secondary-color);
+        margin-top: 15px;
+        font-size: 1.2rem;
+    }
+
+    /* 体验指南 */
+    .guide-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .step {
+        display: flex;
+        gap: 20px;
+    }
+
+    .step-number {
+        width: 40px;
+        height: 40px;
+        background: var(--secondary-color);
+        color: var(--dark-color);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    .step-content h3 {
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+    }
+
+    .guide-tips {
+        margin-top: 50px;
+        padding: 30px;
+        background: rgba(0, 240, 255, 0.1);
+        border-radius: 10px;
+        border-left: 4px solid var(--accent-color);
+    }
+
+    .guide-tips ul {
+        list-style: none;
+    }
+
+    .guide-tips li {
+        padding: 10px 0;
+        position: relative;
+        padding-left: 30px;
+    }
+
+    .guide-tips li::before {
+        content: '•';
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+        position: absolute;
+        left: 0;
+        top: 5px;
+    }
+</style>
+
+<script>
+    // 3D文物展示交互逻辑
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.querySelector('.artifact-container');
+        const models = document.querySelectorAll('.artifact-model');
+        const dots = document.querySelectorAll('.dot');
+        const btnPrev = document.querySelector('.btn-prev');
+        const btnNext = document.querySelector('.btn-next');
+        let currentIndex = 0;
+
+        function updateSlider() {
+            container.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        btnNext.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % models.length;
+            updateSlider();
+        });
+
+        btnPrev.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + models.length) % models.length;
+            updateSlider();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateSlider();
+            });
+        });
+
+        // VR控制按钮交互
+        const vrStartBtn = document.getElementById('vr-start');
+        const vrFullscreenBtn = document.getElementById('vr-fullscreen');
+        const vrSettingsBtn = document.getElementById('vr-settings');
+        const vrOverlay = document.querySelector('.vr-overlay');
+
+        vrStartBtn.addEventListener('click', function() {
+            vrOverlay.innerHTML = `
+                <h3>井冈山革命博物馆VR导览</h3>
+                <p>正在进入VR模式...</p>
+                <div class="loading-bar">
+                    <div class="loading-progress" style="animation: loading 2s forwards;"></div>
+                </div>
+            `;
+
+            // 模拟VR场景加载
+            setTimeout(() => {
+                vrOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    vrOverlay.style.display = 'none';
+                    // 这里实际应该启动VR体验
+                    console.log('VR体验已启动');
+                }, 500);
+            }, 2000);
+        });
+
+        vrFullscreenBtn.addEventListener('click', function() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.error(`全屏错误: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        });
+
+        vrSettingsBtn.addEventListener('click', function() {
+            alert('VR设置选项将在此显示\n包括画质调整、控制设置等');
+        });
+
+        // 模拟3D旋转效果
+        models.forEach(model => {
+            const rotateBtn = model.querySelector('.btn-rotate');
+            const modelObj = model.querySelector('.model-object'); // 实际项目中替换为真实3D模型
+
+            let isRotating = false;
+            let rotation = 0;
+
+            rotateBtn.addEventListener('click', () => {
+                isRotating = !isRotating;
+                rotateBtn.innerHTML = isRotating ?
+                    '<i class="fas fa-pause"></i> 暂停' :
+                    '<i class="fas fa-undo"></i> 旋转';
+
+                if (isRotating) {
+                    function animate() {
+                        if (!isRotating) return;
+                        rotation += 0.5;
+                        // 实际项目中这里控制3D模型旋转
+                        // modelObj.style.transform = `rotateY(${rotation}deg)`;
+                        requestAnimationFrame(animate);
+                    }
+                    animate();
+                }
+            });
+        });
+    });
+</script>
